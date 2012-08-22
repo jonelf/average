@@ -1,0 +1,12 @@
+%h1 Enter value 
+.desc
+  ==For #{@avg.name} you should enter #{@avg.what} in #{@avg.unit}. 
+%form{:method=>"post", :action=>"/poll"}
+  %p
+    Value:
+    %input{:type=>"text", :name=>"value", :value=>"", :style=>"width:52px"}
+    %input{:type=>"submit", :value=>"Save"}
+    %input{:type=>"hidden", :name=>"cryptokey", :value=>@avg.cryptokey}
+    %br
+    %br
+    %a{:href=>"/avg/"+@avg.cryptokey} Show average

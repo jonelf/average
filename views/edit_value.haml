@@ -1,0 +1,18 @@
+%h1 Edit value 
+.desc
+  ==For #{@avg.name} you should enter #{@avg.what} in #{@avg.unit}. 
+%form{:method=>"post", :action=>"/poll/edit/"+@value.valuekey}
+  %p
+    == #{@value_warning}
+    Value:
+    %input{:type=>"text", :name=>"value", :value=>@value.value, :style=>"width:52px"}
+    %input{:type=>"submit", :value=>"Edit"}
+    %input{:type=>"hidden", :name=>"cryptokey", :value=>@avg.cryptokey}
+    %input{:type=>"hidden", :name=>"valuekey", :value=>@value.valuekey} 
+    %br
+    %p
+      Copy this
+      %a{:href=>"/poll/edit/"+@value.valuekey} link:
+      %input{:type=>"text", :value=>options.app_url+"poll/edit/"+@value.valuekey, :style=>"width:330px"}
+      if you want to edit this value in the future.
+    %a{:href=>"/avg/"+@avg.cryptokey} Show average

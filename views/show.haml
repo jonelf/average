@@ -1,0 +1,16 @@
+%h1 Average
+.avg
+  %p== Name: #{@avg.name}
+  %p== What: #{@avg.what}
+  %p== Unit: #{@avg.unit}
+  %p== Threshold: #{@avg.avgthreshold}
+  %p== Public: #{@public}
+  %p== Allow multiple: #{@allow_multiple}
+  %p
+    Share this 
+    %a{:href=>"/avg/"+@avg.cryptokey} link: 
+    %input{:type=>"test", :value=>options.app_url+"avg/"+@avg.cryptokey, :style=>"width:280px"} 
+    with your friends.
+  %p 
+    %a{:href=>"/edit/"+@avg.adminkey} Edit
+    (copy this link if you want to be able to edit later)

@@ -1,0 +1,12 @@
+%h1= @avg.name
+%p== The average #{@avg.what} is #{average} #{@avg.unit}.
+%p
+  The 
+  %a{:href=>"http://en.wikipedia.org/wiki/Standard_deviation", :class=>"external"} standard deviation 
+  == is #{stddev} and the sample size is #{sample_size}.
+%p= @already_done
+- if @value!=nil then
+  %a{:href=>"/poll/edit/"+@value.valuekey} Edit value
+%p
+- if @already_done.length==0 || @avg.allow_multiple==true then
+  %a{:href=>"/poll/"+@avg.cryptokey} Add value

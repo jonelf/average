@@ -1,0 +1,11 @@
+%h1
+  = @avg.name
+  is trying to get the average of their
+  = (@avg.what || "") + "."
+.message
+  %p== Not enough data. You need #{values_to_collect} more.
+  - if @already_done.length==0 then
+    %a{:href=>"/poll/"+@avg.cryptokey} Add value
+  %p= @already_done
+- if @value!=nil then
+  %a{:href=>"/poll/edit/"+@value.valuekey} Edit value

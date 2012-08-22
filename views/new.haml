@@ -1,0 +1,36 @@
+%h1== #{edit_or_create} average poll
+%form{:method=>"post", :action=>"/new"}
+  %p
+    Name (e.g. Team A):
+    %input{:type=>"text", :name=>"name", :value=>@avg.name, :maxlength=>50}
+    %br
+    What (e.g. income): &nbsp;
+    %input{:type=>"text", :name=>"what", :value=>@avg.what, :maxlength=>50}
+    %br
+    Unit (e.g. USD):
+    %input{:type=>"text", :name=>"unit", :value=>@avg.unit, :maxlength=>50, :style=>"width:45px"}
+    %br
+    %br
+    Threshold for showing average:
+    %input{:type=>"text", :name=>"avgthreshold", :style=>"width:40px", :value=>"0", :value=>@avg.avgthreshold}
+    %br
+    Public average: 
+    %input{:type=>"checkbox", :name=>"public", :id=>"public_avg", :value=>"true", :checked=>@avg.public}
+    %br
+    Allow multiple entries: 
+    %input{:type=>"checkbox", :name=>"allow_multiple", :id=>"allow_multiple_entries", :value=>"true", :checked=>@avg.allow_multiple}
+    %input{:type=>"hidden", :name=>"adminkey", :value=>@avg.adminkey}
+    %br
+    %input{:type=>"submit", :value=>edit_or_create}
+    %br
+    - if @avg.adminkey!="" then
+      %p 
+        Sometimes a very big or small value skews the average.
+        %br
+        %a{:href=>"/clean/top/"+@avg.adminkey,:style=>"background:#FF344C"} Remove the highest value
+        %br
+        %a{:href=>"/clean/bottom/"+@avg.adminkey,:style=>"background:#FF344C"} Remove the lowest value
+        %br
+        %br
+        %a{:href=>"/avg/"+@avg.cryptokey} Show average
+    %br

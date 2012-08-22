@@ -1,0 +1,28 @@
+!!! XML
+!!! Basic
+%html
+  %head
+    %title Don't be mean, be average!
+    %link{:href=>"/stylesheets/style.css",:media=>"screen",:rel=>"stylesheet",:type=>"text/css"}
+    %link{:rel=>"icon", :type=>"image/gif", :href=>"/favicon.ico"}
+  %body
+    %h1 On averag<a style="background:white" href="http://www.dailymotion.com/video/x2pth1_kaiser-chiefs-everything-is-average_musice">e</a>
+    .presentation
+      Ever wanted to know the average of anything among your peers without having to tell 
+      your number to anyone?
+      %br 
+      This service tries to scratch that itch.
+      %br
+      %a{:href=>'/new'} Create new average
+    .content
+      %br
+      %strong List of public averages
+      %br
+      - @avgs.each do |avg|
+        .average
+          %a{:href => '/avg/'+avg.cryptokey, :class=>'averagelink'}= avg.name |
+    .cont
+      %br
+      %br
+      %p
+        %a{:href=>'mailto:jonas@plea.se',:class=>'contact'}Contact
